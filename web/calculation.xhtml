@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Recipe : Writing a Jakarta Server Faces Managed Bean</title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h2>Perform Calculation</h2>
+        <p>
+            Use the following form to perform a calculation on Two numbers.
+            <br/>
+            Enter the numbers in the two text fields below and select a calculation Type to perform, then hit the
+            Calculate button
+            <br/>
+            <h:messages errorStyle="color:red" infoStyle="color: green" globalOnly="true"/>
+        </p>
+        <br/>
+        <br/>
+        <h:form id="calculationForm">
+            <h:outputLabel value="Number1" for="number1"/>
+            <h:inputText id="number1" value="#{calculationController.num1}"/>
+            <br/>
+            <h:outputLabel for="number2" value="Number2"/>
+            <h:inputText id="number2" value="#{calculationController.num2}"/>
+            <br/><br/>
+
+            Calculation Type :
+            <h:selectOneMenu id="calculationType" value="#{calculationController.calculationType}">
+                <f:selectItems value="#{calculationController.calculationList}"/>
+            </h:selectOneMenu>
+            <br/><br/>
+
+            Result :
+            <h:outputText value="#{calculationController.result}" id="result"/>
+            <br/><br/>
+            <h:commandButton value="Calculate" action="#{calculationController.performCalculation()}"/>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
